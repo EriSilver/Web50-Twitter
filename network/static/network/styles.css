@@ -1,0 +1,78 @@
+body {
+  text-align: left;
+  margin: 15px;
+}
+body #alert {
+  background-color: #aee0fd;
+  text-align: center;
+  color: #dc5959;
+  font-weight: bold;
+  padding: 5px;
+  font-size: 22px;
+}
+body #all nav > h4 {
+  margin: 15px;
+  display: inline-block;
+  margin-right: 30px;
+}
+body #all #postsdiv {
+  border: none;
+  margin: 0px;
+  padding: 0px;
+}
+body #all h1 {
+  margin: 15px;
+}
+body #all abbr {
+  cursor: pointer;
+}
+body #all span {
+  width: 100%;
+  word-wrap: break-word;
+}
+body #all textarea {
+  border: 1px solid #d0d0d0;
+  width: 100%;
+  padding: 10px;
+}
+body #all textarea:focus {
+  outline: none;
+  border: 1px solid #c0c0c0;
+}
+body #all img {
+  height: 30px;
+  width: 30px;
+}
+body #all div {
+  padding: 20px;
+  border: 1px solid #d0d0d0;
+  margin: 5px;
+}
+body #all table {
+  text-align: center;
+  width: 100%;
+}
+body #all table td {
+  width: 50%;
+}
+body #all table abbr {
+  text-decoration: none;
+}
+body #all table .comment {
+  border-left: 1px solid #d0d0d0;
+}
+body #all .comment:hover, body #all .edit {
+  color: #657ff0;
+  cursor: pointer;
+}
+body #all .date {
+  color: #c0c0c0;
+}
+body #pagesdiv {
+  text-align: center;
+  background-color: #f8f9fa;
+  margin-top: 7px;
+  padding: 10px;
+}
+
+/*# sourceMappingURL=styles.css.map */

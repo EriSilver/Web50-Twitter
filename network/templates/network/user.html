@@ -1,0 +1,57 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+    {% if msg %}
+        <div id="alert">{{msg}}<br></div>
+    {% endif %}
+    <div id="all">
+        <h1>{{title}} Posts</h1>
+        <nav><h4 id="following">Following: {{pageuser.followingCount}}</h4><h4 id="followers">Followers: {{pageuser.followersCount}}</h4></nav>
+        {% if user.is_authenticated %}
+            {% if same %}
+                <div class="newpost">
+                    <form action="{% url 'newpost' %}" method="POST">
+                        {%csrf_token%}
+                        <span><textarea name="thenewpost" value="{{postvalue}}" maxlength="280"></textarea></span><br>
+                        <button class="btn btn-primary">Post</button><span></span>
+                    </form>
+                </div>
+            {% else %}
+                <button id="follow" class="btn btn-primary" style="margin:15px;">{%if followtrue%}Unfollow{%else%}Follow{%endif%}</button>
+            {% endif %}
+        {% endif %}
+
+        <div id="postsdiv">
+            {% if posts %}
+                {% for post in posts %}
+                    <div>
+                        <span data-id="{{post.id}}" data-user="{{post.puser.username}}">
+                            <strong><a href="{% url 'user' post.puser.username 1 %}">{{post.puser.username}}</a></strong><br><br>
+                            <span class="edit">Edit</span><br>
+                            <span>{{post.post}}</span><br>
+                            <span class="date">{{post.pdate}}</span><br>
+                            <table><tr>
+                                <td><abbr title="Like"><img {% if post.id|slugify in theliked %}src="{% static '/network/liked.png'%}"{% else %}src="{% static '/network/unliked.png'%}"{% endif %} data-id="{{post.id}}"><span>   {{post.postLikes}}</span></abbr></td>
+                                <td class="comment">Comment</td>
+                            </tr></table>
+                        </span>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <h3>No Posts</h3>
+            {% endif %}
+        </div>
+    </div>
+    <div id="pagesdiv">
+        <nav>
+            {% if pages %}
+                {% for e in pages %}
+                    <button class="pages btn btn-primary">{{e}}</button>
+                {% endfor %}
+            {% else %}
+                <button class="pages btn btn-primary">1</button>
+            {% endif %}
+        </nav>
+    </div>
+{% endblock %}
